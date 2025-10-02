@@ -1,8 +1,10 @@
-import { ArrowRight, Search, Upload, MapPin } from "lucide-react";
+import { ArrowRight, Search, Upload, MapPin, Sparkles, Recycle, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import CarbonCounter from "./CarbonCounter";
 import heroImage from "@/assets/hero-construction.jpg";
+import stickerImage from "@/assets/material-stickers.png";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -86,17 +88,25 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             
+            {/* Floating Stickers */}
+            <div className="absolute top-4 right-4 sticker animate-pulse">
+              <Badge className="bg-accent text-accent-foreground">AI Verified ✓</Badge>
+            </div>
+            <div className="absolute top-20 left-4 sticker" style={{ transform: 'rotate(3deg)' }}>
+              <Badge className="bg-success text-success-foreground">Salvageable</Badge>
+            </div>
+            
             {/* Floating Stats */}
             <div className="absolute bottom-6 left-6 right-6 grid grid-cols-3 gap-3">
-              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border">
+              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border card-lift">
                 <div className="text-2xl font-bold text-accent">2.4k+</div>
                 <div className="text-xs text-muted-foreground">Materials</div>
               </div>
-              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border">
+              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border card-lift">
                 <div className="text-2xl font-bold text-cta">95%</div>
                 <div className="text-xs text-muted-foreground">Diverted</div>
               </div>
-              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border">
+              <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 border border-border card-lift">
                 <div className="text-2xl font-bold text-success">12h</div>
                 <div className="text-xs text-muted-foreground">Avg Time</div>
               </div>

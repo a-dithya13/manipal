@@ -1,19 +1,25 @@
 import { Link } from "react-router-dom";
-import { Recycle, Menu, User, MapPin } from "lucide-react";
+import { Recycle, Menu, User, MapPin, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTheme } from "@/components/ThemeProvider";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
+  
   const navLinks = [
+    { to: "/", label: "Home" },
     { to: "/marketplace", label: "Marketplace" },
     { to: "/list-material", label: "List Material" },
     { to: "/request", label: "Request" },
     { to: "/map", label: "Map" },
     { to: "/sustainability", label: "Impact" },
+    { to: "/leaderboard", label: "Leaderboard" },
+    { to: "/rewards", label: "Rewards" },
     { to: "/about", label: "About" },
   ];
 
@@ -41,6 +47,14 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="transition-transform hover:scale-110"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
           <Button variant="ghost" size="icon">
             <MapPin className="h-5 w-5" />
           </Button>

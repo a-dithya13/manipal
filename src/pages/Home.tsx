@@ -1,7 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MaterialCard from "@/components/MaterialCard";
-import { Recycle, Zap, Shield, TrendingUp } from "lucide-react";
+import { Recycle, Zap, Shield, TrendingUp, Users, Award, Trash2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import stickerImage from "@/assets/material-stickers.png";
 
 const Home = () => {
   // Mock data for featured materials
@@ -96,8 +99,48 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Material Categories with Dustbins */}
+      <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Material Categories</h2>
+            <p className="text-xl text-muted-foreground">Sort, collect, and reuse with our smart bins</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Lumber", color: "bg-secondary", count: 340 },
+              { name: "Metal", color: "bg-accent", count: 285 },
+              { name: "Fixtures", color: "bg-cta", count: 192 },
+              { name: "Concrete", color: "bg-muted", count: 167 },
+              { name: "Tiles", color: "bg-teal", count: 143 },
+              { name: "Electrical", color: "bg-success", count: 98 },
+              { name: "Plumbing", color: "bg-primary", count: 76 },
+              { name: "Glass", color: "bg-accent", count: 54 },
+            ].map((cat, i) => (
+              <Card key={i} className="card-lift overflow-hidden group cursor-pointer">
+                <CardContent className="p-6 text-center">
+                  <div className={`mx-auto w-20 h-24 ${cat.color} rounded-lg mb-4 relative transition-transform group-hover:scale-110`}>
+                    <Trash2 className="absolute inset-0 m-auto h-10 w-10 text-white" />
+                    <div className="absolute -top-2 -right-2">
+                      <Badge className="bg-background text-foreground">{cat.count}</Badge>
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-lg">{cat.name}</h3>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Materials */}
-      <section className="py-20 blueprint-bg">
+      <section className="py-20 blueprint-bg relative">
+        {/* Decorative Sticker */}
+        <div className="absolute top-10 right-10 animate-float opacity-20">
+          <img src={stickerImage} alt="" className="w-32 h-32" />
+        </div>
+        
         <div className="container">
           <div className="flex items-center justify-between mb-12">
             <div>
@@ -112,6 +155,44 @@ const Home = () => {
             {featuredMaterials.map((material) => (
               <MaterialCard key={material.id} {...material} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="py-20 bg-gradient-to-br from-accent/10 via-background to-cta/10">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Join Our Community</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Be part of a movement that's transforming construction waste into valuable resources
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="card-lift bg-card/50 backdrop-blur">
+              <CardContent className="pt-6 text-center">
+                <Users className="h-12 w-12 mx-auto mb-4 text-accent" />
+                <h3 className="text-2xl font-bold mb-2">1,200+</h3>
+                <p className="text-muted-foreground">Active Members</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="card-lift bg-card/50 backdrop-blur">
+              <CardContent className="pt-6 text-center">
+                <Award className="h-12 w-12 mx-auto mb-4 text-cta" />
+                <h3 className="text-2xl font-bold mb-2">850</h3>
+                <p className="text-muted-foreground">Badges Earned</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="card-lift bg-card/50 backdrop-blur">
+              <CardContent className="pt-6 text-center">
+                <Recycle className="h-12 w-12 mx-auto mb-4 text-success" />
+                <h3 className="text-2xl font-bold mb-2">98%</h3>
+                <p className="text-muted-foreground">Satisfaction Rate</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

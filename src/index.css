@@ -156,6 +156,7 @@ All colors MUST be HSL.
     border-radius: 0.25rem;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
     transform: rotate(-2deg);
+    animation: stickerFloat 3s ease-in-out infinite;
   }
 
   .sticker::before {
@@ -168,6 +169,11 @@ All colors MUST be HSL.
     background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
     border-radius: 0.25rem;
     pointer-events: none;
+  }
+
+  @keyframes stickerFloat {
+    0%, 100% { transform: rotate(-2deg) translateY(0px); }
+    50% { transform: rotate(-2deg) translateY(-5px); }
   }
 }
 
