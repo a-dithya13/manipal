@@ -8,35 +8,45 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* ReclaimNet Design System - Craft + Tech */
+    --background: 40 23% 97%; /* Paper Off-white #FBFAF6 */
+    --foreground: 215 61% 8%; /* Deep Slate #0F1724 */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 61% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 61% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 215 61% 8%; /* Deep Slate */
+    --primary-foreground: 40 23% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 25 37% 34%; /* Reclaimed Wood #7A4F35 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 15% 90%;
+    --muted-foreground: 215 20% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 160 68% 32%; /* Salvage Green #1F8A5F */
+    --accent-foreground: 0 0% 100%;
+
+    --success: 160 68% 32%;
+    --success-foreground: 0 0% 100%;
+
+    --cta: 33 100% 71%; /* Sunrise Amber #FFB86B */
+    --cta-foreground: 215 61% 8%;
+
+    --teal: 180 56% 52%; /* Sky Teal #3EC3C3 */
+    --teal-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 15% 85%;
+    --input: 40 10% 90%;
+    --ring: 160 68% 32%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +66,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 215 61% 8%;
+    --foreground: 40 23% 97%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 50% 12%;
+    --card-foreground: 40 23% 97%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 50% 12%;
+    --popover-foreground: 40 23% 97%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 40 23% 97%;
+    --primary-foreground: 215 61% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 37% 34%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 30% 20%;
+    --muted-foreground: 40 15% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 160 68% 32%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 215 30% 20%;
+    --input: 215 30% 20%;
+    --ring: 160 68% 45%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +111,92 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  /* Blueprint grid background */
+  .blueprint-bg {
+    background-image: 
+      linear-gradient(rgba(31, 138, 95, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 138, 95, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Craft paper texture */
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03' /%3E%3C/svg%3E");
+  }
+
+  /* Font hover magic */
+  h1, h2, h3, .heading-hover {
+    transition: font-family 0.18s ease, transform 0.18s ease;
+    cursor: default;
+  }
+
+  h1:hover, h2:hover, h3:hover, .heading-hover:hover {
+    font-family: 'Space Grotesk', sans-serif;
+    transform: translateY(-2px);
+  }
+
+  /* Card lift animation */
+  .card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(15, 23, 36, 0.15);
+  }
+
+  /* Sticker effect */
+  .sticker {
+    position: relative;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
+  }
+
+  .sticker::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+    border-radius: 0.25rem;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .animate-counter {
+    animation: countUp 0.5s ease-out;
+  }
+
+  @keyframes countUp {
+    from {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
