@@ -12,6 +12,8 @@ interface MaterialCardProps {
   carbonSavedKg: number;
   condition: "good" | "repairable" | "excellent";
   verified?: boolean;
+  description?: string; // Added description
+  onRequestClick?: () => void; // Added request handler
 }
 
 const MaterialCard = ({
@@ -23,6 +25,8 @@ const MaterialCard = ({
   carbonSavedKg,
   condition,
   verified = false,
+  description, // Added description
+  onRequestClick, // Added request handler
 }: MaterialCardProps) => {
   const getConditionColor = (cond: string) => {
     switch (cond) {
@@ -96,7 +100,7 @@ const MaterialCard = ({
 
         {/* Actions */}
         <div className="flex gap-2">
-          <Button className="flex-1 bg-cta text-cta-foreground hover:bg-cta/90">
+          <Button className="flex-1 bg-cta text-cta-foreground hover:bg-cta/90" onClick={onRequestClick}>
             Request Pickup
           </Button>
           <Button variant="outline" size="icon">

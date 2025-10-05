@@ -19,12 +19,47 @@ const Request = () => {
     description: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Request Submitted! 🎉",
-      description: "We're searching for matching materials nearby...",
-    });
+    
+    try {
+      const response = await fetch('http://localhost:3001/api/requests', { // Assuming backend runs on port 3001
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Request submitted successfully:', result);
+
+      toast({
+        title: "Request Submitted! 🎉",
+        description: "We're searching for matching materials nearby...",
+      });
+
+      // Optionally clear form after successful submission
+      setFormData({
+        materialType: "",
+        quantity: "",
+        location: "",
+        deadline: "",
+        description: "",
+      });
+
+    } catch (error) {
+      console.error('Error submitting request:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
